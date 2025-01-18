@@ -1,7 +1,11 @@
 import React from 'react';
+import Navbar from '../common/Navbar';
 
 const AboutUs = () => {
     return (
+        <>
+        
+       <Navbar />
         <section className="py-20 px-6 bg-yellow-50">
             <div className="max-w-6xl mx-auto text-center">
                 <h1 className="text-4xl font-bold text-yellow-500 mb-6">About Us</h1>
@@ -17,6 +21,7 @@ const AboutUs = () => {
                 </p>
             </div>
         </section>
+        </>
     );
 };
 

@@ -1,17 +1,5 @@
-
+import Navbar from "../common/Navbar";
 const Home = () => {
-    const Navbar = () => {
-        return (
-            <nav className="bg-white py-4 px-8 sm:px-6 xl:px-28 xl:py-12 flex justify-between items-center">
-                <h1 className="text-2xl">NutriScan</h1>
-                <ul className="flex space-x-4 sm:space-x-6">
-                    <li><a href="#" className="text-gray-600 hover:text-[#F6B41A]">Home</a></li>
-                    <li><a href="#features" className="text-gray-600 hover:text-[#F6B41A]">Features</a></li>
-                    <li><a href="#contact" className="text-gray-600 hover:text-[#F6B41A]">Contact</a></li>
-                </ul>
-            </nav>
-        );
-    };
 
     const HeroSection = () => {
         return (
@@ -23,9 +11,9 @@ const Home = () => {
                         <button className="bg-[#F6B41A] text-black px-6 py-2 rounded text-base sm:text-lg">Track Now</button>
                     </div>
                     <div className="grid grid-cols-2 gap-4">
-                        <img src="https://placehold.co/200" alt="QR Scanning Demo 1" className="rounded-lg w-full object-cover" />
-                        <img src="https://placehold.co/200" alt="QR Scanning Demo 2" className="rounded-lg w-full object-cover" />
-                        <img src="https://placehold.co/200" alt="QR Scanning Demo 3" className="rounded-lg w-fullobject-cover" />
+                        <img src="https://media.gettyimages.com/id/1470167308/photo/close-up-of-guest-hand-ordering-meal-in-restaurant-while-scanning-qr-code-with-mobile-phone.jpg?b=1&s=2048x2048&w=0&k=20&c=LO1VQhzOxghAVIijf5LxJnDqOZN4ocj3Oleg3lJlSRo=" alt="QR Scanning Demo 1" className="rounded-lg w-full object-cover" />
+                        <img src="https://media.gettyimages.com/id/1254446953/photo/woman-scanning-qr-code-for-online-menu.jpg?b=1&s=2048x2048&w=0&k=20&c=RNOifnPWgd4WT2ZBEb-soGtMhl23kB1ZY0crn6c4xrQ=" alt="QR Scanning Demo 2" className="rounded-lg w-full object-cover" />
+                        <img src="https://media.gettyimages.com/id/1301623789/photo/asian-female-hands-scanning-the-qr-code-of-the-restaurant-menu.jpg?b=1&s=2048x2048&w=0&k=20&c=q8fc5x0oPPa-9Ssv_2hUhMNNnmjAU4TFYHEFlzr76Qs=" alt="QR Scanning Demo 3" className="rounded-lg w-full object-cover" />
                     </div>
                 </div>
                 <div className="absolute bottom-0 left-0 right-0">
@@ -48,7 +36,7 @@ const Home = () => {
         ];
 
         return (
-            <section id="features" className=" bg-[#F6B41A] py-12 sm:py-16 lg:py-20 px-0 sm:px-6 xl:px-0 relative w-full">
+            <section id="features" className="bg-[#F6B41A] py-12 sm:py-16 lg:py-20 px-4 sm:px-6 xl:px-0 relative w-full">
                 <div className="absolute top-0 left-0 w-full h-full z-[-1]">
                     <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
                         <path fill="#F6B41A" d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
@@ -67,8 +55,6 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-
-
         );
     };
 
@@ -77,20 +63,20 @@ const Home = () => {
             {
                 title: "Enhanced User Interface",
                 description: "We upgraded the user interface of the QR Code Calorie Tracking App, focusing on a more intuitive layout that simplifies navigation for users.",
-                image: "https://placehold.co/200"
+                image: "https://media.gettyimages.com/id/1470167308/photo/close-up-of-guest-hand-ordering-meal-in-restaurant-while-scanning-qr-code-with-mobile-phone.jpg?b=1&s=2048x2048&w=0&k=20&c=LO1VQhzOxghAVIijf5LxJnDqOZN4ocj3Oleg3lJlSRo="
             },
             {
                 title: "Efficient Data Management",
                 description: "Optimized the backend databases to handle large volumes of user data more efficiently.",
-                image: "https://placehold.co/200"
+                image: "https://media.gettyimages.com/id/1087211840/photo/qr-code-scanning.jpg?b=1&s=2048x2048&w=0&k=20&c=-r14yL_-V0lixK0Pyd0GQPloa1jggY3WBac8hto9UO4="
             },
             {
                 title: "Expanded Food Database",
                 description: "We significantly expanded the app's food database by integrating thousands of new food items.",
-                image: "https://placehold.co/200"
+                image: "https://media.gettyimages.com/id/1405275550/photo/young-man-scam-qr-code-using-mobile-phone-in-a-supermarket.jpg?b=1&s=2048x2048&w=0&k=20&c=qqVYKdPMRemjYKGujgvOcMgoeCt8-aydEjNmjz1tYR0="
             },
         ];
-
+    
         return (
             <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 xl:px-12 bg-white">
                 <div className="w-full max-w-full mx-auto">
@@ -108,7 +94,7 @@ const Home = () => {
             </section>
         );
     };
-
+    
     const ContactForm = () => {
         return (
             <section id="contact" className="bg-[#F6B41A] py-12 sm:py-16 lg:py-20 px-4 sm:px-6 xl:px-0 rounded-lg">
@@ -129,14 +115,13 @@ const Home = () => {
                             placeholder="Message"
                             className="col-span-1 sm:col-span-2 px-4 py-2 rounded bg-white/10 border border-white/20 text-white placeholder-black/80 focus:outline-none focus:border-white h-32 text-sm sm:text-base"
                         ></textarea>
-                        {/* <button className="col-span-1 sm:col-span-2 bg-black text-white px-6 py-2 rounded text-sm sm:text-base">Submit</button> */}
                         <button className="col-span-1 sm:col-span-2 bg-black text-white px-6 py-2 rounded text-sm sm:text-base mx-auto block">Submit</button>
-
                     </form>
                 </div>
             </section>
         );
     };
+    
 
     const Footer = () => {
         return (
@@ -145,7 +130,7 @@ const Home = () => {
             </footer>
         );
     };
-
+    
     return (
         <div className="min-h-screen">
             <Navbar />
@@ -159,3 +144,4 @@ const Home = () => {
 }
 
 export default Home;
+
