@@ -1,5 +1,4 @@
 import Footer from "../common/Footer";
-import Navbar from "../common/Navbar";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 const Home = () => {
@@ -168,7 +167,6 @@ const ContactForm = () => {
     
     return (
         <div className="min-h-screen">
-            <Navbar />
             <HeroSection />
             <Features />
             <DetailedInfo />

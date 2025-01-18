@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Html5QrcodeScanner } from "html5-qrcode";
-import Navbar from "../common/Navbar";
 import DishTable from "./DishTable";
 import Footer from "../common/Footer";
 
@@ -55,7 +54,6 @@ console.log(scannedMessage)
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar />
       <div className="flex-grow">
         <div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg">
           <h2 className="text-3xl font-semibold text-center mb-6 text-gray-800">
