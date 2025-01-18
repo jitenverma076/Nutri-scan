@@ -1,4 +1,6 @@
+import Footer from "../common/Footer";
 import Navbar from "../common/Navbar";
+import { useState } from "react";
 const Home = () => {
 
     const HeroSection = () => {
@@ -84,7 +86,7 @@ const Home = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
                         {details.map((detail, index) => (
                             <div key={index} className="text-center">
-                                <img src={detail.image || "https://placehold.co/200"} alt={detail.title} className="w-full h-48 object-cover rounded-lg mb-4 sm:mb-6" />
+                                <img src={detail.image || "https://placehold.co/200"} alt={detail.title} className="w-full h-96 object-cover rounded-lg mb-4 sm:mb-6" />
                                 <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">{detail.title}</h3>
                                 <p className="text-gray-600 text-sm sm:text-base">{detail.description}</p>
                             </div>
@@ -95,41 +97,98 @@ const Home = () => {
         );
     };
     
-    const ContactForm = () => {
-        return (
-            <section id="contact" className="bg-[#F6B41A] py-12 sm:py-16 lg:py-20 px-4 sm:px-6 xl:px-0 rounded-lg">
-                <div className="w-full max-w-4xl mx-auto">
-                    <h2 className="text-2xl sm:text-3xl lg:text-4xl text-center mb-8 sm:mb-10 text-black">Connect with NutriScan Team</h2>
-                    <form className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                        <input
-                            type="text"
-                            placeholder="Name"
-                            className="px-4 py-2 rounded bg-white/10 border border-white/20 text-white placeholder-black/80 focus:outline-none focus:border-white text-sm sm:text-base"
-                        />
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            className="px-4 py-2 rounded bg-white/10 border border-white/20 text-white placeholder-black/80 focus:outline-none focus:border-white text-sm sm:text-base"
-                        />
-                        <textarea
-                            placeholder="Message"
-                            className="col-span-1 sm:col-span-2 px-4 py-2 rounded bg-white/10 border border-white/20 text-white placeholder-black/80 focus:outline-none focus:border-white h-32 text-sm sm:text-base"
-                        ></textarea>
-                        <button className="col-span-1 sm:col-span-2 bg-black text-white px-6 py-2 rounded text-sm sm:text-base mx-auto block">Submit</button>
-                    </form>
-                </div>
-            </section>
-        );
-    };
-    
+    // const ContactForm = () => {
+    //     return (
+    //         <section id="contact" className="bg-[#F6B41A] py-12 sm:py-16 lg:py-20 px-4 sm:px-6 xl:px-0 rounded-lg">
+    //             <div className="w-full max-w-4xl mx-auto">
+    //                 <h2 className="text-2xl sm:text-3xl lg:text-4xl text-center mb-8 sm:mb-10 text-black">Connect with NutriScan Team</h2>
+    //                 <form className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6" onSubmit={(e) => e.preventDefault()}>
+    //                     <input
+    //                         type="text"
+    //                         placeholder="Name"
+    //                         className="px-4 py-2 rounded bg-white/10 border border-white/20 text-white placeholder-black/80 focus:outline-none focus:border-white text-sm sm:text-base"
+    //                     />
+    //                     <input
+    //                         type="email"
+    //                         placeholder="Email"
+    //                         className="px-4 py-2 rounded bg-white/10 border border-white/20 text-white placeholder-black/80 focus:outline-none focus:border-white text-sm sm:text-base"
+    //                     />
+    //                     <textarea
+    //                         placeholder="Message"
+    //                         className="col-span-1 sm:col-span-2 px-4 py-2 rounded bg-white/10 border border-white/20 text-white placeholder-black/80 focus:outline-none focus:border-white h-32 text-sm sm:text-base"
+    //                     ></textarea>
+    //                     <button className="col-span-1 sm:col-span-2 bg-black text-white px-6 py-2 rounded text-sm sm:text-base mx-auto block">Submit</button>
+    //                 </form>
+    //             </div>
+    //         </section>
+    //     );
+    // };
+  
 
-    const Footer = () => {
-        return (
-            <footer className="bg-[#F6B41A] text-black text-center py-4 sm:py-6 border-t border-white/10 px-4 sm:px-6 xl:px-0">
-                <p className="text-base sm:text-lg">NutriScan</p>
-            </footer>
-        );
+const ContactForm = () => {
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        message: ""
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
     };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Clear the form
+        setFormData({
+            name: "",
+            email: "",
+            message: ""
+        });
+    };
+
+    return (
+        <section id="contact" className="bg-[#F6B41A] py-12 sm:py-16 lg:py-20 px-4 sm:px-6 xl:px-0 rounded-lg">
+            <div className="w-full max-w-4xl mx-auto">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl text-center mb-8 sm:mb-10 text-black">Connect with NutriScan Team</h2>
+                <form className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6" onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        className="px-4 py-2 rounded bg-white/10 border border-white/20 text-black placeholder-black/80 focus:outline-none focus:border-white text-sm sm:text-base"
+                    />
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className="px-4 py-2 rounded bg-white/10 border border-white/20 text-black placeholder-black/80 focus:outline-none focus:border-white text-sm sm:text-base"
+                    />
+                    <textarea
+                        name="message"
+                        placeholder="Message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        className="col-span-1 sm:col-span-2 px-4 py-2 rounded bg-white/10 border border-white/20 text-black placeholder-black/80 focus:outline-none focus:border-white h-32 text-sm sm:text-base"
+                    ></textarea>
+                    <button className="col-span-1 sm:col-span-2 bg-black text-white px-6 py-2 rounded text-sm sm:text-base mx-auto block">Submit</button>
+                </form>
+            </div>
+        </section>
+    );
+};
+
+
+
+
+
     
     return (
         <div className="min-h-screen">
