@@ -6,8 +6,8 @@ const AboutUs = () => {
     return (
         <div className="flex flex-col min-h-screen">
             <Navbar />
-            <div className="flex-grow">
-                <section className="py-20 px-6 bg-yellow-50">
+            <div className="flex-grow flex items-center">
+                <section className="py-20 px-6 bg-yellow-50 w-full">
                     <div className="max-w-6xl mx-auto text-center">
                         <h1 className="text-4xl font-bold text-yellow-500 mb-6">About Us</h1>
                         <p className="text-gray-600 text-lg mb-6">

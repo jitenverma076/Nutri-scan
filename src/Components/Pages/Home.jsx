@@ -1,7 +1,9 @@
 import Footer from "../common/Footer";
 import Navbar from "../common/Navbar";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 const Home = () => {
+    const navigate = useNavigate();
 
     const HeroSection = () => {
         return (
@@ -10,7 +12,7 @@ const Home = () => {
                     <div>
                         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-normal mb-4 sm:mb-6">Track Calories Instantly with QR.</h1>
                         <p className="text-base sm:text-lg mb-6 sm:mb-8 text-gray-600">Experience seamless calorie tracking in India with NutriScan. Simply scan QR codes to stay on top of your nutrition.</p>
-                        <button className="bg-[#F6B41A] text-black px-6 py-2 rounded text-base sm:text-lg">Track Now</button>
+                        <button className="bg-[#F6B41A] text-black px-6 py-2 rounded text-base sm:text-lg" onClick={()=>navigate("/Qrscanner")}>Track Now</button>
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                         <img src="https://media.gettyimages.com/id/1470167308/photo/close-up-of-guest-hand-ordering-meal-in-restaurant-while-scanning-qr-code-with-mobile-phone.jpg?b=1&s=2048x2048&w=0&k=20&c=LO1VQhzOxghAVIijf5LxJnDqOZN4ocj3Oleg3lJlSRo=" alt="QR Scanning Demo 1" className="rounded-lg w-full object-cover" />
@@ -97,33 +99,7 @@ const Home = () => {
         );
     };
     
-    // const ContactForm = () => {
-    //     return (
-    //         <section id="contact" className="bg-[#F6B41A] py-12 sm:py-16 lg:py-20 px-4 sm:px-6 xl:px-0 rounded-lg">
-    //             <div className="w-full max-w-4xl mx-auto">
-    //                 <h2 className="text-2xl sm:text-3xl lg:text-4xl text-center mb-8 sm:mb-10 text-black">Connect with NutriScan Team</h2>
-    //                 <form className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6" onSubmit={(e) => e.preventDefault()}>
-    //                     <input
-    //                         type="text"
-    //                         placeholder="Name"
-    //                         className="px-4 py-2 rounded bg-white/10 border border-white/20 text-white placeholder-black/80 focus:outline-none focus:border-white text-sm sm:text-base"
-    //                     />
-    //                     <input
-    //                         type="email"
-    //                         placeholder="Email"
-    //                         className="px-4 py-2 rounded bg-white/10 border border-white/20 text-white placeholder-black/80 focus:outline-none focus:border-white text-sm sm:text-base"
-    //                     />
-    //                     <textarea
-    //                         placeholder="Message"
-    //                         className="col-span-1 sm:col-span-2 px-4 py-2 rounded bg-white/10 border border-white/20 text-white placeholder-black/80 focus:outline-none focus:border-white h-32 text-sm sm:text-base"
-    //                     ></textarea>
-    //                     <button className="col-span-1 sm:col-span-2 bg-black text-white px-6 py-2 rounded text-sm sm:text-base mx-auto block">Submit</button>
-    //                 </form>
-    //             </div>
-    //         </section>
-    //     );
-    // };
-  
+    
 
 const ContactForm = () => {
     const [formData, setFormData] = useState({

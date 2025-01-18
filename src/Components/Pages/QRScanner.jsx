@@ -7,7 +7,6 @@ import Footer from "../common/Footer";
 const QRScanner = () => {
   const qrCodeScannerRef = useRef(null);
   const [scannedMessage, setScannedMessage] = useState(null);
-  const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
     // Initialize QR code scanner
@@ -27,11 +26,8 @@ const QRScanner = () => {
           const parsedData = JSON.parse(decodedText);
           console.log("Scanned and parsed data:", parsedData);
           setScannedMessage(parsedData);
-          setErrorMessage(null); // Clear any previous error messages
         } catch (error) {
           console.error("Invalid QR Code data:", error);
-          setScannedMessage(null); // Clear previous scanned data
-          setErrorMessage("The QR code data is not in a valid JSON format.");
         }
       },
       (error) => {
@@ -44,7 +40,7 @@ const QRScanner = () => {
       qrScanner.clear();
     };
   }, []);
-
+console.log(scannedMessage)
   // Function to update the quantity
   const updateQuantity = (id, delta) => {
     if (scannedMessage) {
@@ -79,9 +75,7 @@ const QRScanner = () => {
               <DishTable data={scannedMessage} updateQuantity={updateQuantity} />
             </div>
           ) : (
-            <div className="text-center text-gray-500">
-              {errorMessage || "Scan a QR Code to see the data"}
-            </div>
+            <div className="text-center text-gray-500">Scan a QR Code to see the data</div>
           )}
         </div>
       </div>

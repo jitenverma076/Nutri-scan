@@ -13,6 +13,9 @@ const Navbar = () => {
         <div className="hidden md:flex space-x-6">
           <Link to="/Qrscanner" className="text-lg hover:text-gray-700 transition-colors">QR Scanner</Link>
           <Link to="/Aboutus" className="text-lg hover:text-gray-700 transition-colors">About Us</Link>
+         
+          <Link to="/adddish" className="text-lg hover:text-gray-700 transition-colors">Add Dish</Link>
+          <Link to="/inventory" className="text-lg hover:text-gray-700 transition-colors">Inventory</Link>
           <Link to="/Login" className="text-lg hover:text-gray-700 transition-colors">Login</Link>
         </div>
         <div className="md:hidden">
@@ -30,6 +33,9 @@ const Navbar = () => {
         <div className="md:hidden mt-4 space-y-4">
           <Link to="/Qrscanner" className="block text-lg hover:text-gray-700 transition-colors">QR Scanner</Link>
           <Link to="/Aboutus" className="block text-lg hover:text-gray-700 transition-colors">About Us</Link>
+         
+          <Link to="/adddish" className="block text-lg hover:text-gray-700 transition-colors">Add Dish</Link>
+          <Link to="/inventory" className="block text-lg hover:text-gray-700 transition-colors">Inventory</Link>
           <Link to="/Login" className="block text-lg hover:text-gray-700 transition-colors">Login</Link>
         </div>
       )}

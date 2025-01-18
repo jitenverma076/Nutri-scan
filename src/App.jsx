@@ -7,6 +7,8 @@ import { Route, Routes } from 'react-router-dom'
 import AboutUs from './Components/Pages/AboutUs'
 // import Login from './Components/Pages/Login'
 import PageNotFound from './Components/Pages/Pagenotfound'
+import AddDishForm from './Components/Pages/AddDishForm'
+import InventoryPage from './Components/Pages/Inventory'
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path="/Aboutus" element={<AboutUs />} />
         {/* <Route path="/Login" element={<Login />} /> */}
         <Route path="*" element={<PageNotFound />} />
+        <Route path='/adddish' element={<AddDishForm />} />
+        <Route path="/inventory" element={<InventoryPage />} />
       </Routes>
     </>
   )
