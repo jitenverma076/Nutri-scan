@@ -8,9 +8,12 @@ const apiClient = axios.create({
 
 apiClient.interceptors.request.use(
   function (config) {
-    const token = localStorage.getItem("authToken");
+    const token = JSON.parse(localStorage.getItem("authToken"));
 
-    config.headers.Authorization = `Bearer ${token}`;
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    console.log("Authorization Header:", config.headers.Authorization);
     return config;
   },
   function (error) {
@@ -26,14 +29,15 @@ const signupUser = (data) => {
   return apiClient.post("/user/signup", data);
 };
 
+const addDish = (data) => {
+  const config = {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  };
 
-const addDish = (data)=>{
-    return apiClient.post("/dish/addDish", data)
-}
+  return apiClient.post("/dish/addDish", data);
+};
 
 
-export {
-    loginUser,
-    signupUser,
-    addDish
-}
+export { loginUser, signupUser, addDish };

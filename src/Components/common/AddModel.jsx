@@ -5,7 +5,6 @@ const AddModel = ({ isModalOpen, setIsModalOpen }) => {
   const [ingredients, setIngredients] = useState([]);
   const [dishName, setDishName] = useState("");
   const [dishDescription, setDishDescription] = useState("");
-  const [dishImage, setDishImage] = useState(null);
 
   const handleIngredientAdd = () => {
     setIngredients([
@@ -20,11 +19,7 @@ const AddModel = ({ isModalOpen, setIsModalOpen }) => {
     setIngredients(updatedIngredients);
   };
 
-  const handleImageChange = (event) => {
-    setDishImage(event.target.files[0]);
-  };
-
-  const handleFormSubmit = async(event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
     const validIngredients = ingredients.filter(
       (ingredient) =>
@@ -34,7 +29,6 @@ const AddModel = ({ isModalOpen, setIsModalOpen }) => {
     const formData = {
       dishName,
       dishDescription,
-      dishImage,
       ingredients: validIngredients,
     };
 
@@ -117,25 +111,6 @@ const AddModel = ({ isModalOpen, setIsModalOpen }) => {
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                     required
                   ></textarea>
-                </div>
-
-                {/* Dish Image */}
-                <div>
-                  <label
-                    htmlFor="dish_image"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >
-                    Upload Dish Image
-                  </label>
-                  <input
-                    type="file"
-                    name="dish_image"
-                    id="dish_image"
-                    accept="image/*"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                    onChange={handleImageChange}
-                    capture="camera" // Allow camera capture
-                  />
                 </div>
 
                 {/* Ingredients Section */}

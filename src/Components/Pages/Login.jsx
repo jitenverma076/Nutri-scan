@@ -16,6 +16,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await loginUser({ email, password });
+      console.log(response.data)
       login(response.data.token);
       navigate("/inventory");
       const userData = response.data.data;
