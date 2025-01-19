@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "../Components/Pages/Home";
-import QRScanner from "../Components/Pages/QrScanner";
+import QRScanner from "../Components/Pages/QRScanner";
 import AboutUs from "../Components/Pages/AboutUs";
 import Login from "../Components/Pages/Login";
 import Signup from "../Components/Pages/Signup";
