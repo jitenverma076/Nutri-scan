@@ -2,29 +2,35 @@ import React, { useEffect, useRef, useState } from "react";
 import { Html5QrcodeScanner } from "html5-qrcode";
 import DishTable from "./DishTable";
 import Footer from "../common/Footer";
+import { useAuth } from "../../Context/AuthContext";
+import { addDish } from "../../Api/apiStore";
 
 const QRScanner = () => {
   const qrCodeScannerRef = useRef(null);
   const [scannedMessage, setScannedMessage] = useState(null);
+  const {userData} = useAuth()
 
   useEffect(() => {
-    // Initialize QR code scanner
     const qrScanner = new Html5QrcodeScanner(
       "qr-reader",
       {
-        fps: 10, // Frames per second
-        qrbox: { width: 250, height: 250 }, // QR code scanning box size
+        fps: 10,
+        qrbox: { width: 250, height: 250 },
       },
-      false // Disable verbose logs
+      false 
     );
 
     qrScanner.render(
-      (decodedText, decodedResult) => {
+      async(decodedText, decodedResult) => {
         try {
           // Parse the scanned data as JSON
           const parsedData = JSON.parse(decodedText);
-          console.log("Scanned and parsed data:", parsedData);
-          setScannedMessage(parsedData);
+          const newData = {dishName: parsedData.dishName, ingredients: parsedData.items}
+          setScannedMessage(newData);
+
+          if(userData){
+            await addDish(newData)
+          }
         } catch (error) {
           console.error("Invalid QR Code data:", error);
         }
@@ -34,13 +40,10 @@ const QRScanner = () => {
       }
     );
 
-    // Cleanup on unmount
     return () => {
       qrScanner.clear();
     };
   }, []);
-console.log(scannedMessage)
-  // Function to update the quantity
   const updateQuantity = (id, delta) => {
     if (scannedMessage) {
       const updatedIngredients = scannedMessage.ingredients.map((ingredient) =>
