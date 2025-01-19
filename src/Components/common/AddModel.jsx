@@ -199,7 +199,8 @@ const AddModel = ({ isModalOpen, setIsModalOpen }) => {
   const [ingredients, setIngredients] = useState([]);
   const [dishName, setDishName] = useState("");
   const [dishDescription, setDishDescription] = useState("");
-  const [error, setError] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleIngredientAdd = () => {
     setIngredients([
@@ -216,24 +217,13 @@ const AddModel = ({ isModalOpen, setIsModalOpen }) => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
-    // Check if all fields are filled
-    if (!dishName || !dishDescription) {
-      setError("Dish name and description are required.");
-      return;
-    }
-
-    // Validate that all ingredients are complete
     const validIngredients = ingredients.filter(
       (ingredient) =>
-        ingredient.name &&
-        ingredient.quantity &&
-        ingredient.unit &&
-        ingredient.caloriesPerUnit
+        ingredient.name && ingredient.quantity && ingredient.unit && ingredient.caloriesPerUnit
     );
 
-    if (validIngredients.length !== ingredients.length) {
-      setError("All ingredients must have name, quantity, unit, and calories per unit.");
+    if (!dishName || !dishDescription || validIngredients.length === 0) {
+      setErrorMessage("All fields are required and at least one ingredient must be added.");
       return;
     }
 
@@ -245,14 +235,16 @@ const AddModel = ({ isModalOpen, setIsModalOpen }) => {
 
     try {
       const res = await addDish(formData);
-      if (res.success) {
-        alert("Dish added successfully!");
-        setIsModalOpen(false); // Close the modal
-      } else {
-        setError("Failed to add dish. Please try again.");
-      }
+      console.log(res);
+      setSuccessMessage("Dish added successfully!");
+      setErrorMessage("");
+      // Clear form
+      setDishName("");
+      setDishDescription("");
+      setIngredients([]);
     } catch (error) {
-      setError("An error occurred. Please try again.");
+      console.error("Error adding dish:", error);
+      setErrorMessage("Failed to add dish. Please try again.");
     }
   };
 
@@ -292,12 +284,17 @@ const AddModel = ({ isModalOpen, setIsModalOpen }) => {
 
             {/* Modal Body */}
             <div className="p-4 md:p-5">
+              {errorMessage && (
+                <div className="mb-4 text-sm text-red-600 dark:text-red-400">
+                  {errorMessage}
+                </div>
+              )}
+              {successMessage && (
+                <div className="mb-4 text-sm text-green-600 dark:text-green-400">
+                  {successMessage}
+                </div>
+              )}
               <form className="space-y-4" onSubmit={handleFormSubmit}>
-                {/* Error message */}
-                {error && (
-                  <div className="text-red-500 text-sm mb-4">{error}</div>
-                )}
-
                 {/* Dish Name */}
                 <div>
                   <label
