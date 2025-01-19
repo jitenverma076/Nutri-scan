@@ -20,7 +20,7 @@ const Navbar = () => {
     { name: "QR Scanner", route: "/Qrscanner" },
     { name: "About Us", route: "/Aboutus" },
     { name: "Dashboard", route: "/inventory" },
-    { name: "Add Dish", route: "/adddish" },
+    // { name: "Add Dish", route: "/adddish" },
   ];
 
   const handleProfileToggle = () => setIsProfileOpen(!isProfileOpen);
@@ -67,12 +67,12 @@ const Navbar = () => {
 
               {isProfileOpen && (
                 <div className="absolute right-0 mt-2 bg-white border shadow-md rounded-lg p-2 w-48">
-                  <button
+                  {/* <button
                     onClick={() => console.log("Profile clicked")}
                     className="block text-sm text-gray-700 w-full text-left py-2"
                   >
                     Profile
-                  </button>
+                  </button> */}
                   <button
                     onClick={handleLogout}
                     className="block text-sm text-gray-700 w-full text-left py-2"
